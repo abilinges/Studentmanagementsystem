@@ -4,20 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'GitHub source code checked out by Jenkins'
+                echo 'Checkout successful'
             }
         }
 
-        stage('Build C Program') {
+        stage('Build') {
             steps {
-                sh 'gcc --version'
-                sh 'gcc hello.c -o studentapp'
-            }
-        }
-
-        stage('Run Application') {
-            steps {
-                sh 'echo "Student Management System build successful"'
+                bat 'docker --version'
+                bat 'docker build -t studentapp .'
             }
         }
     }
